@@ -4,19 +4,21 @@ class Person extends Component {
 
     constructor() {
         super();
-        this.state = { name: '', role: '' };
+        this.state = { star: {name: '', role: ''} };
     }
 
     handleNameChange = (event) => {
-        this.setState({ name: event.target.value });
+        let role = this.state.star.role;
+        this.setState({star: {name: event.target.value, role}});
     }
 
     handleRoleChange = (event) => {
-        this.setState({ role: event.target.value });
+        let name = this.state.star.name
+        this.setState({star: {role: event.target.value, name}});
     }
 
     logName = (event) => {
-        console.log(this.state.name);
+        console.log(this.state.star);
     }
 
     render() {
@@ -26,7 +28,7 @@ class Person extends Component {
                 Name: <input onChange={this.handleNameChange} />
                 Role: <input onChange={this.handleRoleChange} />
                 <button onClick={this.logName}>Submit</button>
-                <br />{this.state.name} is famous for {this.state.role}.
+                <br />{this.state.star.name} is famous for {this.state.star.role}.
             </div>
         );
     }
